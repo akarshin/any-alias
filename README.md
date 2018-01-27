@@ -4,14 +4,17 @@ Any Alias, or simply `a`, is a Python 3 tool to increase productivity and lower 
 
 ### Installation
 
-*Linux*
+**Linux**
+
 Run `./install.sh`. You should have access to `a` right away, the installation path is usually `/home/$USER/.local/bin`.
 
-*Mac*
+**Mac**
+
 Run `./install.sh`. You will be asked to input the directory to install into. Note, that your directory should be in
  your `$PATH`, i.e. in your `.bash_profile`.
 
-*Windows*
+**Windows**
+
 We do not target Windows platforms, sorry. If you figure out the installation, please do not hesitate to create a pull
  request with a windows installer. Thank you in advance.
 
