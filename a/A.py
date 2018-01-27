@@ -56,10 +56,27 @@ class A(object):
     def _load_config_file(self, path):
         with open(path + "/alias.yml", "r") as stream:
             try:
-                return yaml.load(stream)
+                config = yaml.load(stream)
+                config = self._reparse_config_with_constants(config, path)
+
+                return config
             except yaml.YAMLError as ex:
                 print(ex)
                 sys.exit()
+
+    # Go over the configs and substitute the so-far only one constant
+    def _reparse_config_with_constants(self, config, path):
+        try:
+            for commands in config['commands']:
+                if isinstance(config['commands'][commands], str):
+                    config['commands'][commands] = config['commands'][commands].replace("{{cwd}}", path)
+                elif isinstance(config['commands'][commands], list):
+                    for id, command in enumerate(config['commands'][commands]):
+                        config['commands'][commands][id] = command.replace("{{cwd}}", path)
+        except KeyError:
+            pass
+
+        return config
 
     # Merge the settings so that all of them are available.
     def _merge_settings(self, source, destination):

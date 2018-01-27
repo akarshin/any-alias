@@ -129,18 +129,58 @@ commands:
 If you run `a e 'Hello World'`, you will get the following:
 
 ```
-[user@localhost ~]$ d e 'Hello World'
+[user@localhost ~]$ a e 'Hello World'
 Hello World
-``` 
+```
+
+### Constants
+
+Any Alias has reserved words enclosed in double curly braces.
+Actually, there's only one reserved word so far:
+
+- `cwd` is substituted with current *config* directory.
+
+```yaml
+# /home/example/alias.yml
+
+version: 1.0
+
+commands:
+  a: ls -la {{cwd}}
+  
+# /home/example/project/alias.yml
+
+version: 1.0
+
+commands:
+  b: ls -la {{cwd}}
+```
+
+When you run `a`, this is the output you will get:
+
+```
+[user@localhost ~]$ a
+
+    COMMANDS:
+      a:
+        ls -la /home/example
+      
+      b:
+        ls -la /home/example/project
+```
 
 ### What is the point?
 
-We use Any Alias for development. It help with the routine of typing long commands into short one.
-Accessing one of our servers requires typing `ssh -i /home/user/.ssh/id_rsa user@server` **A LOT**.
-Typing all those letters a couple times a day makes it really annoying. Any Alias helps us with allowing to simply type
+We use Any Alias for development. It helps with the routine of typing long commands, ultimately shortening them.
+For example, accessing one of our servers requires typing `ssh -i /home/user/.ssh/id_rsa user@server` **A LOT**.
+Typing all those letters a couple times a day makes it really annoying. Any Alias helps us by allowing to simply type
  `a c`.
 
 ### Help
 
 If you run `a`, it will list all available commands. As said above, Any Alias will iterate over towards root (`/`) and
  read all `alias.yml` files on the way to show it to you.
+ 
+### Help Us
+
+If you find the project useful and helpful, do not hesitate to improve it and send us a pull request.
