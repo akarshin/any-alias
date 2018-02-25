@@ -7,24 +7,12 @@ case "${uname}" in
     pip3 install --user --force-reinstall --upgrade .
     ;;
   Darwin*)
-    predefined_target_path=""
-    display_predefined_target_path=""
+    pip3 install --user --force-reinstall --upgrade .
+    sudo ln -s ~/Library/Python/3.6/bin/a /usr/local/bin/a
 
-    if [ -f install.lock ]; then
-      predefined_target_path="`cat install.lock`"
-      display_predefined_target_path=" [${predefined_target_path}]"
-    fi
-
-    echo "Path to install to${display_predefined_target_path}:"
-    read target_path
-
-    if [ "$target_path" == "" ]; then
-      target_path="$predefined_target_path"
-    else
-      echo "${target_path}" > install.lock
-    fi
-
-    pip3 install --target "${target_path}" --force-reinstall --upgrade .
+    echo "Your python installation directory might be root only."
+    echo "If Any Alias does not work on your system, try reassigning the python installation directory to your user"
+    echo "by running 'sudo chown $USER ~/Library/Python'"
     ;;
   *)
     echo "FATAL: Could not figure out your OS. It doesn't look like Linux or MacOS."
