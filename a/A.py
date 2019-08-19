@@ -56,7 +56,7 @@ class A(object):
     def _load_config_file(self, path):
         with open(path + "/alias.yml", "r") as stream:
             try:
-                config = yaml.load(stream)
+                config = yaml.load(stream, Loader=yaml.SafeLoader)
                 config = self._reparse_config_with_constants(config, path)
 
                 return config
