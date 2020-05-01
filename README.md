@@ -18,6 +18,39 @@ Run `./install.sh`. You will be asked to input the directory to install into. No
 We do not target Windows platforms, sorry. If you figure out the installation, please do not hesitate to create a pull
  request with a windows installer. Thank you in advance.
 
+**After the installation**
+Create `alias.yml` somewhere. It can be your project, your home directory or your system root (`/`).
+
+### Listing your command
+To list all the commands you have, simply run `a`.
+
+```
+[user@localhost ~]$ a
+
+                                         _ _
+            /\                     /\   | (_)
+           /  \   _ __  _   _     /  \  | |_  __ _ ___
+          / /\ \ | '_ \| | | |   / /\ \ | | |/ _` / __|
+         / ____ \| | | | |_| |  / ____ \| | | (_| \__ \
+        /_/    \_\_| |_|\__, | /_/    \_\_|_|\__,_|___/
+                         __/ |
+                        |___/
+
+        DESCRIPTION:
+          Any Alias - Developer's time saver.
+        
+
+        USAGE:
+          a <command>
+
+        COMMANDS:
+          hello
+            echo Hello World
+          gs
+            git status
+
+```
+
 ### Commands
 You may define your custom commands in `alias.yml` in a folder where you need your commands. Say, you define `alias.yml`
  in `/home/foo` like so: 
@@ -176,11 +209,6 @@ For example, accessing one of our servers requires typing `ssh -i /home/user/.ss
 Typing all those letters a couple times a day makes it really annoying. Any Alias helps us by allowing to simply type
  `a c`.
 
-### Help
-
-If you run `a`, it will list all available commands. As said above, Any Alias will iterate over towards root (`/`) and
- read all `alias.yml` files on the way to show it to you.
- 
 ### Help Us
 
 If you find the project useful and helpful, do not hesitate to improve it and send us a pull request.
