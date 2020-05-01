@@ -22,6 +22,7 @@ We do not target Windows platforms, sorry. If you figure out the installation, p
 Create `alias.yml` somewhere. It can be your project, your home directory or your system root (`/`).
 
 ### Listing your command
+
 To list all the commands you have, simply run `a`.
 
 ```
